@@ -54,14 +54,19 @@ const refreshToken = async token => {
 
 const log = (funcName, data) => console.log('[', new Date(), funcName, ']', data)
 
-const error404 = (e = new Error(), res = express.response) => {
-    log(e)
+const error404 = (e = new Error(), req = express.request, res = express.response) => {
+    log(req.url, e)
     res.status(404).json({ msg: e.message })
 }
 
-const error500 = (e = new Error(), res = express.response) => {
-    log(e)
+const error400 = (e = new Error(), req = express.request, res = express.response) => {
+    log(req.url, e)
+    res.status(400).json({ msg: e.message })
+}
+
+const error500 = (e = new Error(), req = express.request, res = express.response) => {
+    log(req.url, e)
     res.status(500).json({ msg: e.message })
 }
 
-module.exports = { dbConnection, dbTransaction, error404, error500, decrypt, decrypting, encrypt, log, refreshToken }
+module.exports = { dbConnection, dbTransaction, error400, error404, error500, decrypt, decrypting, encrypt, log, refreshToken }

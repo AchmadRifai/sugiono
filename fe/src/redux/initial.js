@@ -12,14 +12,16 @@ export const initialSlice = createSlice({
             host: '',
             user: '',
             idRsa: '',
-            idPubRsa: ''
+            idPubRsa: '',
+            password: ''
         }, github: {
             user: '',
             pat: ''
         }, gitlab: {
             user: '',
             pat: ''
-        }, willInitial: true
+        }, willInitial: true,
+        step: 1
     },
     reducers: {
         setInitial: (state, action) => { },
@@ -35,10 +37,12 @@ export const initialSlice = createSlice({
         setGithubPat(state, action) { },
         setGitlabUser(state, action) { },
         setGitlabPat(state, action) { },
+        setServerPassword(state, action) { },
+        setStep(state, action) { }
     }
 })
 
-export const { setInitial, setUserName, setUserPassword, setUserRole, setUserUsername, setServerHost,
+export const { setInitial, setUserName, setUserPassword, setUserRole, setUserUsername, setServerHost, setServerPassword, setStep,
     setServerIdPubRsa, setServerIdRsa, setServerUser, setGithubPat, setGithubUser, setGitlabPat, setGitlabUser } = initialSlice.actions
 
 export default initialSlice.reducer
